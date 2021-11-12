@@ -45,8 +45,8 @@ public:
 		Type type;
 		bool leftIsPressed;
 		bool rightIsPressed;
-		int x;
-		int y;
+		float x;
+		float y;
 	public:
 		Event( Type type,const Mouse& parent ) noexcept
 			:
@@ -60,15 +60,15 @@ public:
 		{
 			return type;
 		}
-		std::pair<int,int> GetPos() const noexcept
+		std::pair<float,float> GetPos() const noexcept
 		{
 			return{ x,y };
 		}
-		int GetPosX() const noexcept
+		float GetPosX() const noexcept
 		{
 			return x;
 		}
-		int GetPosY() const noexcept
+		float GetPosY() const noexcept
 		{
 			return y;
 		}
@@ -85,9 +85,9 @@ public:
 	Mouse() = default;
 	Mouse( const Mouse& ) = delete;
 	Mouse& operator=( const Mouse& ) = delete;
-	std::pair<int,int> GetPos() const noexcept;
-	int GetPosX() const noexcept;
-	int GetPosY() const noexcept;
+	std::pair<float,float> GetPos() const noexcept;
+	float GetPosX() const noexcept;
+	float GetPosY() const noexcept;
 	bool IsInWindow() const noexcept;
 	bool LeftIsPressed() const noexcept;
 	bool RightIsPressed() const noexcept;
@@ -98,21 +98,21 @@ public:
 	}
 	void Flush() noexcept;
 private:
-	void OnMouseMove( int x,int y ) noexcept;
+	void OnMouseMove( float x,float y ) noexcept;
 	void OnMouseLeave() noexcept;
 	void OnMouseEnter() noexcept;
-	void OnLeftPressed( int x,int y ) noexcept;
-	void OnLeftReleased( int x,int y ) noexcept;
-	void OnRightPressed( int x,int y ) noexcept;
-	void OnRightReleased( int x,int y ) noexcept;
-	void OnWheelUp( int x,int y ) noexcept;
-	void OnWheelDown( int x,int y ) noexcept;
+	void OnLeftPressed( float x,float y ) noexcept;
+	void OnLeftReleased( float x,float y ) noexcept;
+	void OnRightPressed( float x,float y ) noexcept;
+	void OnRightReleased( float x,float y ) noexcept;
+	void OnWheelUp( float x,float y ) noexcept;
+	void OnWheelDown( float x,float y ) noexcept;
 	void TrimBuffer() noexcept;
-	void OnWheelDelta( int x,int y,int delta ) noexcept;
+	void OnWheelDelta( float x,float y,int delta ) noexcept;
 private:
 	static constexpr unsigned int bufferSize = 16u;
-	int x;
-	int y;
+	float x;
+	float y;
 	bool leftIsPressed = false;
 	bool rightIsPressed = false;
 	bool isInWindow = false;

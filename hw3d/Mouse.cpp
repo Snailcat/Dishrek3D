@@ -22,17 +22,17 @@
 #include "ShrekWin.h"
 #include "Mouse.h"
 
-std::pair<int,int> Mouse::GetPos() const noexcept
+std::pair<float, float> Mouse::GetPos() const noexcept
 {
 	return { x,y };
 }
 
-int Mouse::GetPosX() const noexcept
+float Mouse::GetPosX() const noexcept
 {
 	return x;
 }
 
-int Mouse::GetPosY() const noexcept
+float Mouse::GetPosY() const noexcept
 {
 	return y;
 }
@@ -68,7 +68,7 @@ void Mouse::Flush() noexcept
 	buffer = std::queue<Event>();
 }
 
-void Mouse::OnMouseMove( int newx,int newy ) noexcept
+void Mouse::OnMouseMove( float newx,float newy ) noexcept
 {
 	x = newx;
 	y = newy;
@@ -91,7 +91,7 @@ void Mouse::OnMouseEnter() noexcept
 	TrimBuffer();
 }
 
-void Mouse::OnLeftPressed( int x,int y ) noexcept
+void Mouse::OnLeftPressed(float x, float y ) noexcept
 {
 	leftIsPressed = true;
 
@@ -99,7 +99,7 @@ void Mouse::OnLeftPressed( int x,int y ) noexcept
 	TrimBuffer();
 }
 
-void Mouse::OnLeftReleased( int x,int y ) noexcept
+void Mouse::OnLeftReleased(float x, float y ) noexcept
 {
 	leftIsPressed = false;
 
@@ -107,7 +107,7 @@ void Mouse::OnLeftReleased( int x,int y ) noexcept
 	TrimBuffer();
 }
 
-void Mouse::OnRightPressed( int x,int y ) noexcept
+void Mouse::OnRightPressed(float x, float y ) noexcept
 {
 	rightIsPressed = true;
 
@@ -115,7 +115,7 @@ void Mouse::OnRightPressed( int x,int y ) noexcept
 	TrimBuffer();
 }
 
-void Mouse::OnRightReleased( int x,int y ) noexcept
+void Mouse::OnRightReleased(float x, float y ) noexcept
 {
 	rightIsPressed = false;
 
@@ -123,13 +123,13 @@ void Mouse::OnRightReleased( int x,int y ) noexcept
 	TrimBuffer();
 }
 
-void Mouse::OnWheelUp( int x,int y ) noexcept
+void Mouse::OnWheelUp(float x, float y ) noexcept
 {
 	buffer.push( Mouse::Event( Mouse::Event::Type::WheelUp,*this ) );
 	TrimBuffer();
 }
 
-void Mouse::OnWheelDown( int x,int y ) noexcept
+void Mouse::OnWheelDown(float x, float y ) noexcept
 {
 	buffer.push( Mouse::Event( Mouse::Event::Type::WheelDown,*this ) );
 	TrimBuffer();
@@ -143,7 +143,7 @@ void Mouse::TrimBuffer() noexcept
 	}
 }
 
-void Mouse::OnWheelDelta( int x,int y,int delta ) noexcept
+void Mouse::OnWheelDelta(float x, float y,int delta ) noexcept
 {
 	wheelDeltaCarry += delta;
 	// generate events for every 120 
