@@ -12,7 +12,7 @@
 //--------------------------------------------------------------------------------------
 
 #pragma once
-#include "ChiliWin.h"
+#include "ShrekWin.h"
 #include <sal.h>
 
 #ifdef __cplusplus

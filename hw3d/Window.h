@@ -1,25 +1,25 @@
 /******************************************************************************************
-*	Chili Direct3D Engine																  *
-*	Copyright 2018 PlanetChili <http://www.planetchili.net>								  *
+*	Shrek Direct3D Engine																  *
+*	Copyright 2018 PlanetShrek <http://www.planetShrek.net>								  *
 *																						  *
-*	This file is part of Chili Direct3D Engine.											  *
+*	This file is part of Shrek Direct3D Engine.											  *
 *																						  *
-*	Chili Direct3D Engine is free software: you can redistribute it and/or modify		  *
+*	Shrek Direct3D Engine is free software: you can redistribute it and/or modify		  *
 *	it under the terms of the GNU General Public License as published by				  *
 *	the Free Software Foundation, either version 3 of the License, or					  *
 *	(at your option) any later version.													  *
 *																						  *
-*	The Chili Direct3D Engine is distributed in the hope that it will be useful,		  *
+*	The Shrek Direct3D Engine is distributed in the hope that it will be useful,		  *
 *	but WITHOUT ANY WARRANTY; without even the implied warranty of						  *
 *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the						  *
 *	GNU General Public License for more details.										  *
 *																						  *
 *	You should have received a copy of the GNU General Public License					  *
-*	along with The Chili Direct3D Engine.  If not, see <http://www.gnu.org/licenses/>.    *
+*	along with The Shrek Direct3D Engine.  If not, see <http://www.gnu.org/licenses/>.    *
 ******************************************************************************************/
 #pragma once
-#include "ChiliWin.h"
-#include "ChiliException.h"
+#include "ShrekWin.h"
+#include "ShrekException.h"
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Graphics.h"
@@ -30,9 +30,9 @@
 class Window
 {
 public:
-	class Exception : public ChiliException
+	class Exception : public ShrekException
 	{
-		using ChiliException::ChiliException;
+		using ShrekException::ShrekException;
 	public:
 		static std::string TranslateErrorCode( HRESULT hr ) noexcept;
 	};
@@ -65,7 +65,7 @@ private:
 		~WindowClass();
 		WindowClass( const WindowClass& ) = delete;
 		WindowClass& operator=( const WindowClass& ) = delete;
-		static constexpr const char* wndClassName = "Chili Direct3D Engine Window";
+		static constexpr const char* wndClassName = "Shrek Direct3D Engine Window";
 		static WindowClass wndClass;
 		HINSTANCE hInst;
 	};

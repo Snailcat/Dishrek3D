@@ -1,8 +1,9 @@
 #pragma once
-#include "ChiliWin.h"
+#include "ShrekWin.h"
 #include <wrl.h>
 #include <vector>
 #include <dxgidebug.h>
+#include <string>
 
 class DxgiInfoManager
 {

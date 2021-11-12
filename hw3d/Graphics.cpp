@@ -89,8 +89,8 @@ Graphics::Graphics( HWND hWnd )
 	// create depth stensil texture
 	wrl::ComPtr<ID3D11Texture2D> pDepthStencil;
 	D3D11_TEXTURE2D_DESC descDepth = {};
-	descDepth.Width = 800u;
-	descDepth.Height = 600u;
+	descDepth.Width = width;
+	descDepth.Height = height;
 	descDepth.MipLevels = 1u;
 	descDepth.ArraySize = 1u;
 	descDepth.Format = DXGI_FORMAT_D32_FLOAT;
@@ -156,14 +156,14 @@ void Graphics::DrawTestTriangle( float angle,float x,float z )
 	// create vertex buffer (1 2d triangle at center of screen)
 	Vertex vertices[] =
 	{
-		{ -1.0f,-1.0f,-1.0f	 },
-		{ 1.0f,-1.0f,-1.0f	 },
-		{ -1.0f,1.0f,-1.0f	 },
-		{ 1.0f,1.0f,-1.0f	  },
-		{ -1.0f,-1.0f,1.0f	 },
-		{ 1.0f,-1.0f,1.0f	  },
-		{ -1.0f,1.0f,1.0f	 },
-		{ 1.0f,1.0f,1.0f	 },
+		{-1.0f	,-1.0f	,-1.0f},
+		{1.0f	,-1.0f	,-1.0f},
+		{-1.0f	,1.0f	,-1.0f},
+		{1.0f	,1.0f	,-1.0f},
+		{-1.0f	,-1.0f	,1.0f },
+		{1.0f	,-1.0f	,1.0f },
+		{-1.0f	,1.0f	,1.0f },
+		{1.0f	,1.0f	,1.0f },
 	};
 	wrl::ComPtr<ID3D11Buffer> pVertexBuffer;
 	D3D11_BUFFER_DESC bd = {};
@@ -181,7 +181,6 @@ void Graphics::DrawTestTriangle( float angle,float x,float z )
 	const UINT stride = sizeof( Vertex );
 	const UINT offset = 0u;
 	pContext->IASetVertexBuffers( 0u,1u,pVertexBuffer.GetAddressOf(),&stride,&offset );
-
 
 	// create index buffer
 	const unsigned short indices[] =
@@ -239,7 +238,6 @@ void Graphics::DrawTestTriangle( float angle,float x,float z )
 
 	// bind constant buffer to vertex shader
 	pContext->VSSetConstantBuffers( 0u,1u,pConstantBuffer.GetAddressOf() );
-
 
 	// lookup table for cube face colors
 	struct ConstantBuffer2
@@ -322,8 +320,8 @@ void Graphics::DrawTestTriangle( float angle,float x,float z )
 
 	// configure viewport
 	D3D11_VIEWPORT vp;
-	vp.Width = 800;
-	vp.Height = 600;
+	vp.Width = width;
+	vp.Height = height;
 	vp.MinDepth = 0;
 	vp.MaxDepth = 1;
 	vp.TopLeftX = 0;
@@ -373,7 +371,7 @@ const char* Graphics::HrException::what() const noexcept
 
 const char* Graphics::HrException::GetType() const noexcept
 {
-	return "Chili Graphics Exception";
+	return "Shrek Graphics Exception";
 }
 
 HRESULT Graphics::HrException::GetErrorCode() const noexcept
@@ -401,7 +399,7 @@ std::string Graphics::HrException::GetErrorInfo() const noexcept
 
 const char* Graphics::DeviceRemovedException::GetType() const noexcept
 {
-	return "Chili Graphics Exception [Device Removed] (DXGI_ERROR_DEVICE_REMOVED)";
+	return "Shrek Graphics Exception [Device Removed] (DXGI_ERROR_DEVICE_REMOVED)";
 }
 Graphics::InfoException::InfoException( int line,const char * file,std::vector<std::string> infoMsgs ) noexcept
 	:
@@ -433,7 +431,7 @@ const char* Graphics::InfoException::what() const noexcept
 
 const char* Graphics::InfoException::GetType() const noexcept
 {
-	return "Chili Graphics Info Exception";
+	return "Shrek Graphics Info Exception";
 }
 
 std::string Graphics::InfoException::GetErrorInfo() const noexcept
