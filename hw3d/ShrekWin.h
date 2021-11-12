@@ -63,8 +63,8 @@ Direct3D Engine																  *
 
 #define STRICT
 
-constexpr unsigned int width = 640;
+constexpr int width = 640;
 
-constexpr unsigned int height = 480;
+constexpr int height = 480;
 
 #include <Windows.h>

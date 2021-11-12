@@ -31,8 +31,8 @@ void App::DoFrame()
 	//);
 	wnd.Gfx().DrawTestTriangle(
 		timer.Peek(),
-		wnd.mouse.GetPosX() / 320.0f - 1.0f,
-		-wnd.mouse.GetPosY() / 240.0f + 1.0f
+		wnd.mouse.GetPosX() / (width/2.0f) - 1.0f,
+		-wnd.mouse.GetPosY() / (height/2.0f) + 1.0f
 	);
 	wnd.Gfx().EndFrame();
 }
